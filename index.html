@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BLENDER: DELETE THE CUBE</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+      
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #1d1d1d; /* Blender Dark Grey */
+        color: #e1e1e1;
+        overflow: hidden;
+      }
+      
+      .font-mono {
+        font-family: 'JetBrains Mono', monospace;
+      }
+
+      /* Custom Scrollbar to mimic Blender */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #2b2b2b; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #545454; 
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #6b6b6b; 
+      }
+
+      /* CSS 3D Cube for the prototype */
+      .scene {
+        perspective: 600px;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .cube-container {
+        width: 100px;
+        height: 100px;
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 0.5s ease-out;
+      }
+      .cube-face {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border: 2px solid #ea7724; /* Blender Orange Selection */
+        background: rgba(100, 100, 100, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        color: white;
+        backface-visibility: visible;
+      }
+      .front  { transform: rotateY(0deg) translateZ(50px); }
+      .back   { transform: rotateY(180deg) translateZ(50px); }
+      .right  { transform: rotateY(90deg) translateZ(50px); }
+      .left   { transform: rotateY(-90deg) translateZ(50px); }
+      .top    { transform: rotateX(90deg) translateZ(50px); }
+      .bottom { transform: rotateX(-90deg) translateZ(50px); }
+
+      .animate-spin-slow {
+        animation: spin 10s infinite linear;
+      }
+
+      @keyframes spin {
+        from { transform: rotateX(-20deg) rotateY(0deg); }
+        to { transform: rotateX(-20deg) rotateY(360deg); }
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
